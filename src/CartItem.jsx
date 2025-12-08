@@ -46,14 +46,12 @@ const CartItem = ({ item, onContinueShopping }) => {
     }
   };
 
-  // ✅ Checkout handler (placeholder)
-  const handleCheckoutShopping = (e) => {
+   const handleCheckoutShopping = (e) => {
     e.preventDefault();
     alert('Functionality to be added for future reference');
   };
 
-  // ✅ Calculate total amount for all items in cart
-  const calculateTotalAmount = () => {
+    const calculateTotalAmount = () => {
     let total = 0;
     
     // Note: This function should be in a parent component or calculated in Redux

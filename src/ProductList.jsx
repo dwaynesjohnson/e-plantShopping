@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addItem } from '../redux/slices/CartSlice';
-import PlantCard from './PlantCard';
+import { addItem, removeItem, updateQuantity } from './CartSlice';
 
 const ProductList = ({ plants = [] }) => {
   const dispatch = useDispatch();
@@ -13,15 +12,14 @@ const ProductList = ({ plants = [] }) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('All');
   
-  // ✅ Calculate total quantity of items in cart
+
   const calculateTotalQuantity = () => {
     return cartItems.reduce((total, item) => total + item.quantity, 0);
   };
   
-  // ✅ Handle adding item to cart
+ 
   const handleAddToCart = (plant) => {
-    // Dispatch addItem action with plant details
-    dispatch(addItem({
+       dispatch(addItem({
       name: plant.name,
       image: plant.image,
       cost: plant.price || plant.cost, // Use whichever field your data has
@@ -29,7 +27,7 @@ const ProductList = ({ plants = [] }) => {
     }));
   };
   
-  // ✅ Filter plants based on search and category
+  
   const filteredPlants = plants.filter(plant => {
     const matchesSearch = plant.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
                          plant.description?.toLowerCase().includes(searchTerm.toLowerCase());
@@ -151,9 +149,7 @@ const ProductList = ({ plants = [] }) => {
       )}
     </div>
   );
-};
-
-// ✅ Optional: PlantCard component (if not already separate)
+}
 const PlantCard = ({ plant, onAddToCart, isInCart, quantityInCart }) => {
   const [isAdding, setIsAdding] = useState(false);
   

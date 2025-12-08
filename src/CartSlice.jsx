@@ -13,11 +13,11 @@ const cartSlice = createSlice({
     addItem: (state, action) => {
       const { name, image, cost } = action.payload;
       
-      // Find existing item by name (as per instructions)
+      
       const existingItem = state.items.find(item => item.name === name);
       
       if (existingItem) {
-        // If item exists, increase quantity
+
         existingItem.quantity += 1;
       } else {
         // If item doesn't exist, add it with quantity 1
@@ -100,7 +100,7 @@ const cartSlice = createSlice({
   },
 });
 
-// Export the action creators
+
 export const { 
   addItem, 
   removeItem, 
@@ -110,5 +110,5 @@ export const {
   decreaseQuantity 
 } = cartSlice.actions;
 
-// Export the reducer
+
 export default cartSlice.reducer;
